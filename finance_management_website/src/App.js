@@ -7,6 +7,10 @@ import { Navbar } from './components/Navbar';
 import ExpenseUploadPage from './pages/ExpenseUploader';
 import ExpenseReportPage from './pages/ExpenseReport';
 import ExpenseMonthsListPage from './pages/ExpenseListPage';
+import FaqPage from './pages/FaqPage';
+import BlogPage from './pages/BlogPage';
+import ProfilePage from './pages/ProfilePage';
+import BlogDetailPage from './pages/BlogDetailPage';
 
 
 function App() {
@@ -20,6 +24,11 @@ function App() {
         <Route path="/expense-upload" element={<ExpenseUploadPage />} />
         <Route path="/expense-report/:id" element={<ExpenseReportPage />} />
         <Route path="/list-expenses" element={<ExpenseMonthsListPage />} />
+        <Route path="/faq" element={<FaqPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/blog/:id" element={<BlogDetailPage />} />
+
       </Routes>
     </Router>
   );

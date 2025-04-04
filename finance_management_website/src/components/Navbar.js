@@ -27,14 +27,35 @@ export const Navbar = () => {
       <div className="line"></div>
     </div>
     <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-      {loggedIn && <>
+    { loggedIn && <>
       <li><Link to={"/"} onClick={() => setMenuOpen(false)}>Home</Link></li>
       <li><Link to={"/expense-upload"} onClick={() => setMenuOpen(false)}>Upload Expense</Link></li>
       <li><Link to={"/list-expenses"} onClick={() => setMenuOpen(false)}>List Monthly Expense</Link></li>
+      <li><Link to={"/faq"} onClick={() => setMenuOpen(false)}>Faq</Link></li>
+      <li><Link to={"/blog"} onClick={() => setMenuOpen(false)}>Blog</Link></li>
       </>}
-
+      {
+        loggedIn && 
+        <>
+       <li className="auth-button">
+          <button style={{ color: "white", textDecoration: "none" }}  onClick={() => { 
+              window.location = "/profile"
+              setMenuOpen(false)
+              }}>Profile</button>
+          </li>
+        <li className="auth-button">
+          <button style={{ color: "white", textDecoration: "none" }}  onClick={() => { 
+              localStorage.removeItem("userid");
+              window.location = "/"
+              setMenuOpen(false)
+              }}>Logout</button>
+          </li>
+          </>
+      }
       {
         !loggedIn && <>
+        <li><Link to={"/faq"} onClick={() => setMenuOpen(false)}>Faq</Link></li>
+        <li><Link to={"/blog"} onClick={() => setMenuOpen(false)}>Blog</Link></li>
         <li className="auth-button">
         <button onClick={() => {
 
@@ -42,17 +63,6 @@ export const Navbar = () => {
       </li>
       <li className="auth-button">
         <button onClick={() => {}}><Link style={{ color: "white", textDecoration: "none" }} to={"/signup"} onClick={() => setMenuOpen(false)}>Sign Up</Link></button>
-      </li></>
-      }
-
-{
-        loggedIn && <>
-        <li className="auth-button">
-       <button style={{ color: "white", textDecoration: "none" }}  onClick={() => { 
-          localStorage.removeItem("userid");
-          window.location = "/"
-          setMenuOpen(false)
-          }}>Logout</button>
       </li></>
       }
 

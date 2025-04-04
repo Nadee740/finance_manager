@@ -13,7 +13,7 @@ function SignupPage() {
     confirmPassword: '',
     agreeTerms: false
   });
-  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -24,6 +24,10 @@ function SignupPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData?.password && formData?.password?.length <= 5) {
+      alert("Password Lenght Should Be Greater Than 5");
+      return;
+    }
     try {
       const { data } = await axios.post(`${baseUrl}/user/sign-up`, formData);
       window.localStorage.setItem("userid" , data.id);
